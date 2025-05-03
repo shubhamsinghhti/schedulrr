@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import { ClerkProvider } from "@clerk/nextjs";
 import CreateEventDrawer from "@/components/create-event";
+import { Suspense } from "react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,7 +23,9 @@ export default function RootLayout({ children }) {
           <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
             {children}
           </main>
-          <CreateEventDrawer />
+          <Suspense fallback={"Loading Event Drawer"}>
+            <CreateEventDrawer />
+          </Suspense>
         </body>
       </html>
     </ClerkProvider>
